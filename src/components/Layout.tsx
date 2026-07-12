@@ -9,7 +9,6 @@ interface LayoutProps {
 }
 
 export function Layout({ activeSectionId, onSectionSelect, children }: LayoutProps) {
-  // Map icons to the sections
   const getSectionIcon = (id: string) => {
     switch (id) {
       case "home":
@@ -34,7 +33,6 @@ export function Layout({ activeSectionId, onSectionSelect, children }: LayoutPro
 
   return (
     <div className="app-layout" id="app-root-layout">
-      {/* Sidebar Navigation */}
       <aside className="app-sidebar" id="app-sidebar">
         <div className="sidebar-brand">
           <div className="brand-logo-glow">
@@ -46,7 +44,6 @@ export function Layout({ activeSectionId, onSectionSelect, children }: LayoutPro
           </div>
         </div>
 
-        {/* Read progress bar */}
         <div className="progress-container">
           <div className="progress-meta">
             <span className="progress-label font-mono">LEARNING GUIDE PROGRESS</span>
@@ -97,9 +94,7 @@ export function Layout({ activeSectionId, onSectionSelect, children }: LayoutPro
         </div>
       </aside>
 
-      {/* Main Content Area */}
       <main className="app-main" id="app-main-content">
-        {/* Top bar for mobile/tablet screen widths */}
         <header className="mobile-header" id="mobile-header">
           <div className="mobile-header-brand">
             <Brain size={20} className="logo-icon-mobile" />
@@ -122,7 +117,6 @@ export function Layout({ activeSectionId, onSectionSelect, children }: LayoutPro
           </div>
         </header>
 
-        {/* Content canvas */}
         <div className="content-container">
           {children}
         </div>

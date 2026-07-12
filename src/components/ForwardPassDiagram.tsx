@@ -15,7 +15,6 @@ export function ForwardPassDiagram() {
           id="forward-pass-svg"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Defs for gradients, glowing filters */}
           <defs>
             <filter id="glow-teal-filter" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="5" result="blur" />
@@ -23,8 +22,6 @@ export function ForwardPassDiagram() {
             </filter>
           </defs>
 
-          {/* Connections (Background lines) */}
-          {/* Input (x: 80) to Hidden (x: 250) */}
           <line x1="80" y1="80" x2="250" y2="50" className="conn-line-bg" />
           <line x1="80" y1="80" x2="250" y2="120" className="conn-line-bg" />
           <line x1="80" y1="80" x2="250" y2="190" className="conn-line-bg" />
@@ -40,7 +37,6 @@ export function ForwardPassDiagram() {
           <line x1="80" y1="260" x2="250" y2="190" className="conn-line-bg" />
           <line x1="80" y1="260" x2="250" y2="260" className="conn-line-bg" />
 
-          {/* Hidden (x: 250) to Output (x: 440) */}
           <line x1="250" y1="50" x2="440" y2="110" className="conn-line-bg" />
           <line x1="250" y1="50" x2="440" y2="210" className="conn-line-bg" />
 
@@ -53,10 +49,7 @@ export function ForwardPassDiagram() {
           <line x1="250" y1="260" x2="440" y2="110" className="conn-line-bg" />
           <line x1="250" y1="260" x2="440" y2="210" className="conn-line-bg" />
 
-
-          {/* Active Forward Signaling Lines (Teal) */}
           <g className="fwd-active-lines">
-            {/* Input to Hidden Layer Pulses */}
             <line x1="80" y1="80" x2="250" y2="50" className="fwd-pulse-1" />
             <line x1="80" y1="80" x2="250" y2="120" className="fwd-pulse-1" />
             <line x1="80" y1="80" x2="250" y2="190" className="fwd-pulse-1" />
@@ -72,7 +65,6 @@ export function ForwardPassDiagram() {
             <line x1="80" y1="260" x2="250" y2="190" className="fwd-pulse-1" />
             <line x1="80" y1="260" x2="250" y2="260" className="fwd-pulse-1" />
 
-            {/* Hidden to Output Layer Pulses */}
             <line x1="250" y1="50" x2="440" y2="110" className="fwd-pulse-2" />
             <line x1="250" y1="50" x2="440" y2="210" className="fwd-pulse-2" />
 
@@ -86,8 +78,6 @@ export function ForwardPassDiagram() {
             <line x1="250" y1="260" x2="440" y2="210" className="fwd-pulse-2" />
           </g>
 
-
-          {/* Input Layer Nodes (x: 80) */}
           <g transform="translate(80, 80)" className="fwd-input-node-group">
             <circle r="18" className="fwd-node-ring fwd-node-ring-in" />
             <circle r="14" className="node fwd-node-in" />
@@ -104,7 +94,6 @@ export function ForwardPassDiagram() {
             <text className="fwd-text text-xs font-bold" dy="4" textAnchor="middle">I₃</text>
           </g>
 
-          {/* Hidden Layer Nodes (x: 250) */}
           <g transform="translate(250, 50)" className="fwd-hidden-node-group">
             <circle r="18" className="fwd-node-ring fwd-node-ring-hid" />
             <circle r="14" className="node fwd-node-hid" />
@@ -126,7 +115,6 @@ export function ForwardPassDiagram() {
             <text className="fwd-text text-xs font-bold" dy="4" textAnchor="middle">H₄</text>
           </g>
 
-          {/* Output Layer Nodes (x: 440) */}
           <g transform="translate(440, 110)" className="fwd-output-node-group">
             <circle r="22" className="fwd-node-ring fwd-node-ring-out" />
             <circle r="16" className="node fwd-node-out" />
@@ -140,7 +128,6 @@ export function ForwardPassDiagram() {
             <text className="fwd-out-val font-mono" dx="28" dy="4">0.08</text>
           </g>
 
-          {/* Layer Headers */}
           <text className="layer-header-text" x="80" y="32" textAnchor="middle">Input Layer</text>
           <text className="layer-header-text" x="250" y="32" textAnchor="middle">Hidden Layer (ReLU)</text>
           <text className="layer-header-text" x="440" y="32" textAnchor="middle">Output (Softmax)</text>

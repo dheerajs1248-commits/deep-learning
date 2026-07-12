@@ -1,63 +1,58 @@
-# 🧠 Deep Learning Visual Guide
+# Deep Learning Visual Guide
 
 An interactive, animated visual guide to deep learning concepts — from perceptrons to CNNs and RNNs.
 
-🌐 **Live Demo**: [showcase.bockcode.in](https://showcase.bockcode.in)
+**Live Demo**: [showcase.bockcode.in](https://showcase.bockcode.in)
 
-## ✨ Features
+## Features
 
-- **Interactive SVG Diagrams** — Perceptrons, Forward Pass, Backpropagation, CNNs, RNNs
-- **Continuous Animations** — Live simulations that loop infinitely
-- **Mathematical Formulations** — Core formulas presented alongside visual explanations
-- **Responsive Design** — Works on desktop, tablet, and mobile
+- Interactive SVG Diagrams — Perceptrons, Forward Pass, Backpropagation, CNNs, RNNs
+- Continuous Animations — Live simulations that loop infinitely
+- Mathematical Formulations — Core formulas presented alongside visual explanations
+- Responsive Design — Works on desktop, tablet, and mobile
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **React 19** + **TypeScript**
-- **Vite** — Lightning-fast build tool
-- **Tailwind CSS v4** — Utility-first styling
-- **Lucide React** — Icon library
-- **Motion** (Framer Motion) — Smooth animations
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS v4
+- Lucide React
+- Motion (Framer Motion)
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server
 npm run dev
-
-# Build for production
 npm run build
 ```
 
-## 📦 Deployment (cPanel)
+## Deployment (cPanel)
 
 1. Run `npm run build` to generate the `dist/` folder
-2. Upload the contents of `dist/` to your cPanel subdomain's `public_html` or subdomain folder
-3. Copy `dist-htaccess` as `.htaccess` into the same folder for SPA routing support
+2. Upload the contents of `dist/` to your cPanel subdomain folder
+3. Copy `dist-htaccess` as `.htaccess` into the same folder
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
-├── App.tsx                  # Main application with section navigation
-├── main.tsx                 # React entry point
-├── index.css                # Global styles & animations
+├── App.tsx
+├── main.tsx
+├── index.css
 ├── components/
-│   ├── Layout.tsx           # Sidebar + responsive shell
+│   ├── Layout.tsx
 │   ├── PerceptronDiagram.tsx
 │   ├── ForwardPassDiagram.tsx
 │   ├── BackpropagationDiagram.tsx
 │   ├── CnnDiagram.tsx
 │   └── RnnDiagram.tsx
 ├── data/
-│   └── dlContent.ts         # All section content & metadata
+│   └── dlContent.ts
 └── hooks/
-    └── useLoopingStep.ts    # Animation loop hook
+    └── useLoopingStep.ts
 ```
 
-## 📄 License
+## License
 
 MIT

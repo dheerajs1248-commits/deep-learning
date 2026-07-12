@@ -1,19 +1,15 @@
 RewriteEngine On
 RewriteBase /
 
-# If the requested file or directory exists, serve it directly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Otherwise, redirect all routes to index.html (SPA support)
 RewriteRule ^ index.html [QSA,L]
 
-# Enable gzip compression for better performance
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
 </IfModule>
 
-# Cache static assets for 1 year
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"

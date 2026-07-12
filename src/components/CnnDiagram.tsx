@@ -1,7 +1,6 @@
 import React from "react";
 import { useLoopingStep } from "../hooks/useLoopingStep";
 
-// Static inputs to show realistic values
 const INPUT_IMAGE_GRID = [
   [1, 1, 1, 0, 0],
   [0, 1, 1, 1, 0],
@@ -16,7 +15,6 @@ const KERNEL_GRID = [
   [1, 0, 1]
 ];
 
-// Calculated outputs from convolving INPUT_IMAGE_GRID with KERNEL_GRID
 const CONVOLVED_OUTPUT_GRID = [
   [4, 3, 4],
   [2, 4, 3],
@@ -24,30 +22,25 @@ const CONVOLVED_OUTPUT_GRID = [
 ];
 
 export function CnnDiagram() {
-  // 9 positions for a 3x3 filter sliding over a 5x5 grid with stride 1
   const step = useLoopingStep(9, 1500);
 
   const row = Math.floor(step / 3);
   const col = step % 3;
 
-  // Pixel grid coordinate calculations
   const cellSize = 28;
   const gap = 2;
   const gridStartX = 40;
   const gridStartY = 65;
 
-  // Kernel center coordinates on input grid
   const highlightX = gridStartX + col * (cellSize + gap);
   const highlightY = gridStartY + row * (cellSize + gap);
   const highlightSize = 3 * cellSize + 2 * gap;
 
-  // Output feature map coordinates
   const outputStartX = 380;
   const outputStartY = 95;
   const outputCellSize = 32;
   const outputGap = 4;
 
-  // Dynamic coordinates for projecting lines
   const centerInputX = highlightX + highlightSize / 2;
   const centerInputY = highlightY + highlightSize / 2;
 
@@ -73,9 +66,7 @@ export function CnnDiagram() {
           id="cnn-svg"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Dynamic connecting projection lines */}
           <g className="projection-lines">
-            {/* Top-left input corner to center kernel */}
             <line
               x1={highlightX}
               y1={highlightY}
@@ -83,7 +74,6 @@ export function CnnDiagram() {
               y2={kernelBoxY}
               className="proj-line animate-pulse-line"
             />
-            {/* Bottom-right input corner to center kernel */}
             <line
               x1={highlightX + highlightSize}
               y1={highlightY + highlightSize}
@@ -91,7 +81,6 @@ export function CnnDiagram() {
               y2={kernelBoxY + kernelBoxHeight}
               className="proj-line animate-pulse-line"
             />
-            {/* Center kernel to target output cell */}
             <line
               x1={kernelBoxX + kernelBoxWidth / 2}
               y1={kernelBoxY + kernelBoxHeight / 2}
@@ -101,7 +90,6 @@ export function CnnDiagram() {
             />
           </g>
 
-          {/* 1. INPUT GRID (5x5) */}
           <g>
             <text className="grid-label font-bold" x="90" y="45" textAnchor="middle">
               Input Image (5x5)
@@ -111,7 +99,6 @@ export function CnnDiagram() {
                 const cx = gridStartX + cIdx * (cellSize + gap);
                 const cy = gridStartY + rIdx * (cellSize + gap);
                 
-                // Check if this pixel is currently covered by the 3x3 filter
                 const isUnderFilter =
                   rIdx >= row && rIdx < row + 3 && cIdx >= col && cIdx < col + 3;
 
@@ -136,7 +123,6 @@ export function CnnDiagram() {
               })
             )}
 
-            {/* Glowing filter sliding box outline */}
             <rect
               x={highlightX - 2}
               y={highlightY - 2}
@@ -147,7 +133,6 @@ export function CnnDiagram() {
             />
           </g>
 
-          {/* 2. CONVOLUTION KERNEL BOX (3x3 represented statically in center) */}
           <g transform={`translate(${kernelBoxX}, ${kernelBoxY})`} className="kernel-box-group">
             <rect
               width={kernelBoxWidth}
@@ -156,7 +141,6 @@ export function CnnDiagram() {
               className="kernel-container-border"
             />
             
-            {/* Kernel weights diagram inside the box */}
             <text className="grid-label font-bold text-[9px]" x={kernelBoxWidth / 2} y="-12" textAnchor="middle">
               3x3 Filter (Weights)
             </text>
@@ -190,13 +174,11 @@ export function CnnDiagram() {
               )}
             </g>
 
-            {/* Operator label */}
             <text className="operator-cross font-bold" x={kernelBoxWidth / 2} y={kernelBoxHeight / 2 + 5} textAnchor="middle">
               ★
             </text>
           </g>
 
-          {/* 3. OUTPUT GRID (3x3 Feature Map) */}
           <g>
             <text className="grid-label font-bold" x="430" y="45" textAnchor="middle">
               Feature Map (3x3)
@@ -206,7 +188,6 @@ export function CnnDiagram() {
                 const ox = outputStartX + ocIdx * (outputCellSize + outputGap);
                 const oy = outputStartY + orIdx * (outputCellSize + outputGap);
 
-                // Is this the currently computed pixel?
                 const isCurrentOutput = orIdx === row && ocIdx === col;
 
                 return (
@@ -231,7 +212,6 @@ export function CnnDiagram() {
             )}
           </g>
 
-          {/* Coordinate Specs */}
           <text className="cnn-coords font-mono" x="275" y="225" textAnchor="middle">
             Stride = 1 | Padding = 0
           </text>

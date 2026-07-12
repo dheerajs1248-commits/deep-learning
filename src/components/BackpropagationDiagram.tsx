@@ -15,7 +15,6 @@ export function BackpropagationDiagram() {
           id="backpropagation-svg"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Defs for gradients, glowing filters */}
           <defs>
             <filter id="glow-magenta-filter" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="5" result="blur" />
@@ -23,8 +22,6 @@ export function BackpropagationDiagram() {
             </filter>
           </defs>
 
-          {/* Connections (Background lines) */}
-          {/* Input (x: 80) to Hidden (x: 250) */}
           <line x1="80" y1="80" x2="250" y2="50" className="conn-line-bg" />
           <line x1="80" y1="80" x2="250" y2="120" className="conn-line-bg" />
           <line x1="80" y1="80" x2="250" y2="190" className="conn-line-bg" />
@@ -40,7 +37,6 @@ export function BackpropagationDiagram() {
           <line x1="80" y1="260" x2="250" y2="190" className="conn-line-bg" />
           <line x1="80" y1="260" x2="250" y2="260" className="conn-line-bg" />
 
-          {/* Hidden (x: 250) to Output (x: 440) */}
           <line x1="250" y1="50" x2="440" y2="110" className="conn-line-bg" />
           <line x1="250" y1="50" x2="440" y2="210" className="conn-line-bg" />
 
@@ -53,11 +49,7 @@ export function BackpropagationDiagram() {
           <line x1="250" y1="260" x2="440" y2="110" className="conn-line-bg" />
           <line x1="250" y1="260" x2="440" y2="210" className="conn-line-bg" />
 
-
-          {/* Active BACKWARD Error Signaling Lines (Magenta/Pink) */}
           <g className="backprop-active-lines">
-            {/* Output to Hidden Layer Pulses (Backward direction) */}
-            {/* We flip the coordinate endpoints or write the keyframes such that offset goes in reverse */}
             <line x1="440" y1="110" x2="250" y2="50" className="back-pulse-1" />
             <line x1="440" y1="110" x2="250" y2="120" className="back-pulse-1" />
             <line x1="440" y1="110" x2="250" y2="190" className="back-pulse-1" />
@@ -68,7 +60,6 @@ export function BackpropagationDiagram() {
             <line x1="440" y1="210" x2="250" y2="190" className="back-pulse-1" />
             <line x1="440" y1="210" x2="250" y2="260" className="back-pulse-1" />
 
-            {/* Hidden to Input Layer Pulses (Backward direction) */}
             <line x1="250" y1="50" x2="80" y2="80" className="back-pulse-2" />
             <line x1="250" y1="50" x2="80" y2="170" className="back-pulse-2" />
             <line x1="250" y1="50" x2="80" y2="260" className="back-pulse-2" />
@@ -86,8 +77,6 @@ export function BackpropagationDiagram() {
             <line x1="250" y1="260" x2="80" y2="260" className="back-pulse-2" />
           </g>
 
-
-          {/* Input Layer Nodes (x: 80) */}
           <g transform="translate(80, 80)" className="back-input-node-group">
             <circle r="18" className="back-node-ring back-node-ring-in" />
             <circle r="14" className="node back-node-in" />
@@ -107,7 +96,6 @@ export function BackpropagationDiagram() {
             <text className="back-delta font-mono" dx="-36" dy="4">w₃ -= dL/dw</text>
           </g>
 
-          {/* Hidden Layer Nodes (x: 250) */}
           <g transform="translate(250, 50)" className="back-hidden-node-group">
             <circle r="18" className="back-node-ring back-node-ring-hid" />
             <circle r="14" className="node back-node-hid" />
@@ -129,7 +117,6 @@ export function BackpropagationDiagram() {
             <text className="back-text text-xs font-bold" dy="4" textAnchor="middle">H₄</text>
           </g>
 
-          {/* Output Layer Nodes (x: 440) - Where Error initiates */}
           <g transform="translate(440, 110)" className="back-output-node-group">
             <circle r="22" className="back-node-ring back-node-ring-out" />
             <circle r="16" className="node back-node-out" />
@@ -145,7 +132,6 @@ export function BackpropagationDiagram() {
             <text className="back-gradient font-mono" dx="28" dy="12">∂L/∂O₂ = -1</text>
           </g>
 
-          {/* Layer Headers */}
           <text className="layer-header-text" x="80" y="32" textAnchor="middle">Input Gradients</text>
           <text className="layer-header-text" x="250" y="32" textAnchor="middle">Hidden Error (Deltas)</text>
           <text className="layer-header-text" x="440" y="32" textAnchor="middle">Loss / Gradient Origin</text>

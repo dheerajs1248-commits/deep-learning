@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * A custom hook that creates a looping animation step counter.
- * Uses requestAnimationFrame to ensure high performance and sync with the screen's refresh rate.
- *
- * @param maxSteps The number of steps in the animation loop.
- * @param intervalMs The duration to stay on each step in milliseconds.
- * @param isPaused Whether the animation loop is currently paused.
- */
 export function useLoopingStep(
   maxSteps: number,
   intervalMs: number,
@@ -17,7 +9,6 @@ export function useLoopingStep(
   const lastTickRef = useRef<number>(0);
   const animationFrameIdRef = useRef<number | null>(null);
 
-  // We use standard refs to avoid re-triggering the effect on every render
   const maxStepsRef = useRef<number>(maxSteps);
   const intervalMsRef = useRef<number>(intervalMs);
   const isPausedRef = useRef<boolean>(isPaused);
@@ -29,7 +20,6 @@ export function useLoopingStep(
   }, [maxSteps, intervalMs, isPaused]);
 
   useEffect(() => {
-    // Reset step if dimensions or parameters change drastically
     setCurrentStep(0);
     lastTickRef.current = performance.now();
 
@@ -43,7 +33,6 @@ export function useLoopingStep(
 
       if (elapsed >= intervalMsRef.current) {
         setCurrentStep((prev) => (prev + 1) % maxStepsRef.current);
-        // Adjust for any lag to keep timing consistent
         lastTickRef.current = time - (elapsed % intervalMsRef.current);
       }
 
@@ -57,7 +46,7 @@ export function useLoopingStep(
         cancelAnimationFrame(animationFrameIdRef.current);
       }
     };
-  }, []); // Only run once on mount
+  }, []);
 
   return currentStep;
 }
